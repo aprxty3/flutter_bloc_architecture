@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc_architecture/application/screen/advice/advice_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'application/core/service/theme_service.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         themeMode: themeService.isDarkModeOn ? ThemeMode.dark : ThemeMode.light,
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
-        home: const Scaffold(),
+        home: const AdviceScreen(),
       ),
     );
   }
