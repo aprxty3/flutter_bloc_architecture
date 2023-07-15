@@ -4,14 +4,14 @@ abstract class AdviceCubState extends Equatable {
   const AdviceCubState();
 
   @override
-  List<Object?> get props => [];
+  List<Object> get props => [];
 }
 
 class AdviceInitial extends AdviceCubState {}
 
 class AdviceStateLoading extends AdviceCubState {
   @override
-  List<Object?> get props => [];
+  List<Object> get props => [];
 }
 
 class AdviceStateLoaded extends AdviceCubState {
@@ -19,7 +19,7 @@ class AdviceStateLoaded extends AdviceCubState {
 
   const AdviceStateLoaded({required this.advice});
   @override
-  List<Object?> get props => [advice];
+  List<Object> get props => [advice];
 }
 
 class AdviceStateError extends AdviceCubState {
@@ -28,5 +28,5 @@ class AdviceStateError extends AdviceCubState {
   const AdviceStateError({required this.message});
 
   @override
-  List<Object?> get props => [message];
+  List<Object> get props => [message];
 }
