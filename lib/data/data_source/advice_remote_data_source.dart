@@ -16,8 +16,11 @@ class AdviceRemoteDataSourceImp implements AdviceRemoteDataSource {
       headers: {'content-type': 'application/json'},
     );
 
-    final responseBody = json.decode(response.body);
-
-    return AdviceResponse.fromJson(responseBody);
+    if (response.statusCode != 200) {
+      throw Exception();
+    } else {
+      final responseBody = json.decode(response.body);
+      return AdviceResponse.fromJson(responseBody);
+    }
   }
 }
