@@ -7,5 +7,5 @@ class AdviceEntities extends Equatable {
   const AdviceEntities({required this.advice, required this.id});
 
   @override
-  List<Object> get props => [advice, id];
+  List<Object?> get props => [advice, id];
 }
