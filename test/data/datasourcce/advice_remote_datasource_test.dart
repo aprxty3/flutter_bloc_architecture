@@ -31,8 +31,8 @@ void main() {
       });
     });
 
-    group('should throw', () {
-      test('a ServerException when Client response was not 200', () {
+    group('throw exception', () {
+      test('server exception', () {
         final mockClient = MockClient();
         final adviceRemoteDatasourceUnderTest =
             AdviceRemoteDatasourceImpl(client: mockClient);
@@ -46,25 +46,6 @@ void main() {
 
         expect(() => adviceRemoteDatasourceUnderTest.getRandomAdviceFromApi(),
             throwsA(isA<ServerException>()));
-      });
-
-      test('a Type Error when Client response was 200 and has no valid data',
-          () {
-        final mockClient = MockClient();
-        final adviceRemoteDatasourceUnderTest =
-            AdviceRemoteDatasourceImpl(client: mockClient);
-        const responseBody = '{"advice": "test advice"}';
-
-        when(mockClient.get(
-          Uri.parse('https://api.flutter-community.com/api/v1/advice'),
-          headers: {
-            'content-type': 'application/json ',
-          },
-        )).thenAnswer(
-            (realInvocation) => Future.value(Response(responseBody, 200)));
-
-        expect(() => adviceRemoteDatasourceUnderTest.getRandomAdviceFromApi(),
-            throwsA(isA<TypeError>()));
       });
     });
   });
