@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc_architecture/application/screen/advice/advice_screen.dart';
 import 'package:provider/provider.dart';
-
+import 'injection.dart' as di;
 import 'application/core/service/theme_service.dart';
 import 'theme.dart';
 
-void main() => runApp(ChangeNotifierProvider(
-      create: (context) => ThemeService(),
-      child: const MyApp(),
-    ));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
+  runApp(ChangeNotifierProvider(
+    create: (context) => ThemeService(),
+    child: const MyApp(),
+  ));
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

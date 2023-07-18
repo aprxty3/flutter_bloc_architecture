@@ -6,19 +6,17 @@ import 'package:flutter_bloc_architecture/domain/failure/failures.dart';
 import 'package:flutter_bloc_architecture/domain/repositories/advice_repo.dart';
 
 class AdviceRepoImp implements AdviceRepo {
-  final AdviceRemoteDataSource adviceRemoteDataSource =
-      AdviceRemoteDataSourceImp();
+  AdviceRepoImp({required this.adviceRemoteDataSource});
+  final AdviceRemoteDataSource adviceRemoteDataSource;
 
   @override
   Future<Either<Failure, AdviceEntities>> getAdviceFromDataSource() async {
     try {
       final result = await adviceRemoteDataSource.getRandomAdviceFromAPI();
       return right(result);
-    } on ServerException catch(_){
+    } on ServerException catch (_) {
       return left(ServerFailur());
-    }
-    
-    catch (e) {
+    } catch (e) {
       return left(GeneralFailure());
     }
   }

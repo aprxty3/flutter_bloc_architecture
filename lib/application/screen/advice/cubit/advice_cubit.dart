@@ -11,8 +11,8 @@ const serverlFailureMessage = 'Server Failure Message';
 const cachelFailureMessage = 'Cache Failure Message';
 
 class AdviceCubit extends Cubit<AdviceCubState> {
-  AdviceCubit() : super(AdviceInitial());
-  final AdviceUsecase adviceUsecase = AdviceUsecase();
+  AdviceCubit({required this.adviceUsecase}) : super(AdviceInitial());
+  final AdviceUsecase adviceUsecase;
 
   void adviceRequest() async {
     emit(AdviceStateLoading());

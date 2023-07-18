@@ -8,7 +8,8 @@ abstract class AdviceRemoteDataSource {
 }
 
 class AdviceRemoteDataSourceImp implements AdviceRemoteDataSource {
-  final client = http.Client();
+  AdviceRemoteDataSourceImp({required this.client});
+  final http.Client client;
   @override
   Future<AdviceResponse> getRandomAdviceFromAPI() async {
     final response = await client.get(
