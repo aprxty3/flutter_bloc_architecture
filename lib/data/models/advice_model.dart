@@ -1,6 +1,7 @@
+
 import 'package:equatable/equatable.dart';
 
-import '../../domain/entities/advice_entities.dart';
+import '../../domain/entities/advice_entity.dart';
 
 class AdviceModel extends AdviceEntity with EquatableMixin {
   AdviceModel({required String advice, required int id})
