@@ -7,7 +7,7 @@ import 'package:flutter_bloc_architecture/domain/repositories/advice_repo.dart';
 class AdviceUsecase {
   AdviceUsecase({required this.adviceRepo});
   final AdviceRepo adviceRepo;
-  Future<Either<Failure, AdviceEntities>> getAdvice() async {
+  Future<Either<Failure, AdviceEntity>> getAdvice() async {
     return adviceRepo.getAdviceFromDataSource();
 
     //ruang untuk bisnis logic

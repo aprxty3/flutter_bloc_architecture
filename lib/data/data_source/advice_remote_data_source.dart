@@ -4,14 +4,14 @@ import 'package:flutter_bloc_architecture/data/model/advice_response.dart';
 import 'package:http/http.dart' as http;
 
 abstract class AdviceRemoteDataSource {
-  Future<AdviceResponse> getRandomAdviceFromAPI();
+  Future<AdviceModel> getRandomAdviceFromAPI();
 }
 
 class AdviceRemoteDataSourceImp implements AdviceRemoteDataSource {
   AdviceRemoteDataSourceImp({required this.client});
   final http.Client client;
   @override
-  Future<AdviceResponse> getRandomAdviceFromAPI() async {
+  Future<AdviceModel> getRandomAdviceFromAPI() async {
     final response = await client.get(
       Uri.parse('https://api.flutter-community.com/api/v1/advice'),
       headers: {'content-type': 'application/json'},
@@ -21,7 +21,7 @@ class AdviceRemoteDataSourceImp implements AdviceRemoteDataSource {
       throw Exception();
     } else {
       final responseBody = json.decode(response.body);
-      return AdviceResponse.fromJson(responseBody);
+      return AdviceModel.fromJson(responseBody);
     }
   }
 }

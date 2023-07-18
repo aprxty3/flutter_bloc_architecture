@@ -13,7 +13,7 @@ Future<void> init() async {
   sl.registerFactory(() => AdviceCubit(adviceUsecase: sl()));
   sl.registerFactory(() => AdviceUsecase(adviceRepo: sl()));
   sl.registerFactory<AdviceRepo>(
-      () => AdviceRepoImp(adviceRemoteDataSource: sl()));
+      () => AdviceRepoImpl(adviceRemoteDatasource: sl()));
   sl.registerFactory<AdviceRemoteDataSource>(
       () => AdviceRemoteDataSourceImp(client: sl()));
   sl.registerLazySingleton(() => http.Client());

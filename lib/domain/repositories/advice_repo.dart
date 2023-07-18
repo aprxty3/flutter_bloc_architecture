@@ -4,5 +4,5 @@ import 'package:flutter_bloc_architecture/domain/entities/advice_entities.dart';
 import '../failure/failures.dart';
 
 abstract class AdviceRepo {
-  Future<Either<Failure, AdviceEntities>> getAdviceFromDataSource();
+  Future<Either<Failure, AdviceEntity>> getAdviceFromDataSource();
 }
