@@ -47,6 +47,24 @@ void main() {
         expect(() => adviceRemoteDatasourceUnderTest.getRandomAdviceFromApi(),
             throwsA(isA<ServerException>()));
       });
+
+      test('ketika data tidak valid', () {
+        final mockClient = MockClient();
+        final adviceRemoteDatasourceUnderTest =
+            AdviceRemoteDatasourceImpl(client: mockClient);
+        const responseBody = '{"advice": "test advice"}';
+
+        when(mockClient.get(
+          Uri.parse('https://api.flutter-community.com/api/v1/advice'),
+          headers: {
+            'content-type': 'application/json ',
+          },
+        )).thenAnswer(
+            (realInvocation) => Future.value(Response(responseBody, 200)));
+
+        expect(() => adviceRemoteDatasourceUnderTest.getRandomAdviceFromApi(),
+            throwsA(isA<TypeError>()));
+      });
     });
   });
 }
